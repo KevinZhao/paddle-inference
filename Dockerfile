@@ -1,6 +1,6 @@
 #FROM registry.baidubce.com/paddlepaddle/paddle:2.2.2-gpu-cuda10.2-cudnn7
-#FROM paddlepaddle/paddle:2.6.2-gpu-cuda12.0-cudnn8.9-trt8.6
-FROM registry.baidubce.com/paddlepaddle/paddle:2.6.2-gpu-cuda12.0-cudnn8.9-trt8.6
+FROM paddlepaddle/paddle:2.6.2-gpu-cuda12.0-cudnn8.9-trt8.6
+#FROM registry.baidubce.com/paddlepaddle/paddle:2.6.2-gpu-cuda12.0-cudnn8.9-trt8.6
 
 ENV LANG=en_US.utf8
 ENV LANG=C.UTF-8
@@ -13,7 +13,7 @@ RUN pip3 install --upgrade pip
 
 ## install flask
 #RUN pip3 install networkx==2.3 flask gevent gunicorn boto3 paddleocr==2.0.1
-RUN pip3 install networkx flask gevent gunicorn boto3 paddleocr==2.6.1
+RUN pip3 install networkx flask gevent gunicorn boto3 paddleocr==2.6.2
 
 RUN pip3 install paddlepaddle-gpu -i https://mirror.baidu.com/pypi/simple
 
