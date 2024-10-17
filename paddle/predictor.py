@@ -33,7 +33,7 @@ print("Start loading models!")
 # 使用 PP-OCRv3 检测模型和 PP-OCRv4 识别及分类模型
 ocr = PaddleOCR(det_model_dir='/opt/program/inference/en_PP-OCRv3_det_infer',  # 英文检测模型
                 rec_model_dir='/opt/program/inference/en_PP-OCRv4_rec_infer',  # 英文识别模型
-                cls_model_dir='/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer',  # 分类模型
+                #cls_model_dir='/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer',  # 分类模型
                 use_pdserving=False)  # 加载模型到内存
 print("Models loaded successfully!")
 

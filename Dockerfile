@@ -16,7 +16,7 @@ RUN pip3 install networkx flask gevent gunicorn boto3 paddleocr==2.6.1
 RUN pip3 install paddlepaddle-gpu -i https://mirror.baidu.com/pypi/simple
 
 #add folder
-RUN git clone -b release/2.8.1 https://github.com/PaddlePaddle/PaddleOCR.git /opt/program/
+RUN git clone -b release/2.6.1 https://github.com/PaddlePaddle/PaddleOCR.git /opt/program/
 
 #download model for inference
 RUN mkdir /opt/program/inference/
