@@ -17,9 +17,9 @@ app = flask.Flask(__name__)
 s3_client = boto3.client('s3')
 
 # 确保新模型的参数存在
-for i in ['/opt/program/inference/ch_PP-OCRv4_server_det_infer',  # 使用最新的 PP-OCRv4 检测模型
-          '/opt/ml/model',
-          '/opt/program/inference/ch_PP-OCRv4_server_cls_infer']:  # 使用最新的 PP-OCRv4 分类模型
+for i in ['/opt/program/inference/en_PP-OCRv3_det_infer',  # 使用 PP-OCRv3 英文检测模型
+          '/opt/ml/model',  # 使用 PP-OCRv4 识别模型，模型路径指向 /opt/ml/model
+          '/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer']:  # 使用 PP-OCRv4 分类模型
     if os.path.exists(i):
         print(f"<<<< pretrained model exists for: {i}")
     else:
@@ -30,11 +30,10 @@ for i in ['/opt/program/inference/ch_PP-OCRv4_server_det_infer',  # 使用最新
 print("<<< files under /opt/ml/model", os.listdir('/opt/ml/model/'))
 print("Start loading models!")
 
-# 使用最新的 PP-OCRv4 模型
-ocr = PaddleOCR(det_model_dir='/opt/program/inference/ch_PP-OCRv4_server_det_infer',
-                rec_model_dir='/opt/ml/model',
-                rec_char_dict_path='/opt/program/ppocr_keys_v1.txt',
-                cls_model_dir='/opt/program/inference/ch_PP-OCRv4_server_cls_infer',
+# 使用 PP-OCRv3 检测模型和 PP-OCRv4 识别及分类模型
+ocr = PaddleOCR(det_model_dir='/opt/program/inference/en_PP-OCRv3_det_infer',  # 英文检测模型
+                rec_model_dir='/opt/program/inference/en_PP-OCRv4_rec_infer',  # 英文识别模型
+                cls_model_dir='/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer',  # 分类模型
                 use_pdserving=False)  # 加载模型到内存
 print("Models loaded successfully!")
 
