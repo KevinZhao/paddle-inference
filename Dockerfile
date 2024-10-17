@@ -30,10 +30,9 @@ RUN cd /opt/program/inference/
 RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/dygraph_v2.0/ch/ch_ppocr_server_v2.0_det_infer.tar && tar -xf /opt/program/inference/ch_ppocr_server_v2.0_det_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_ppocr_server_v2.0_det_infer.tar
 RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/dygraph_v2.0/ch/ch_ppocr_mobile_v2.0_cls_infer.tar && tar -xf /opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer.tar
 
-RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/dygraph_v4.0/ch/ch_PP-OCRv4_server_det_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_server_det_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_server_det_infer.tar
+RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv4/ch_PP-OCRv4_server_det_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_server_det_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_server_det_infer.tar
 
-RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/dygraph_v4.0/ch/ch_PP-OCRv4_mobile_cls_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_mobile_cls_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_mobile_cls_infer.tar
-
+RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv4/ch_PP-OCRv4_mobile_cls_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_mobile_cls_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_mobile_cls_infer.tar
 ### Install nginx notebook
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
