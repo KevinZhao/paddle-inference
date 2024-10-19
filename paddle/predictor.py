@@ -10,7 +10,6 @@ import cv2
 import flask
 import requests
 
-
 # 忽略不必要的警告
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -38,18 +37,6 @@ ocr = PaddleOCR(det_model_dir='/opt/program/inference/en_PP-OCRv3_det_infer',  #
                 use_pdserving=False)  # 加载模型到内存
 print("Models loaded successfully!")
 
-# JSON编码器
-class MyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.integer):
-            return int(obj)
-        elif isinstance(obj, np.floating):
-            return float(obj)
-        elif isinstance(obj, np.ndarray):
-            return obj.tolist()
-        else:
-            return super(MyEncoder, self).default(obj)
-
 # 主推理函数
 def bbox_main(type, imgpath, detect='paddle'):
     if detect == 'paddle':
@@ -71,6 +58,9 @@ def bbox_main(type, imgpath, detect='paddle'):
             'confidence': [i[1][1] for i in result],     # 置信度
             'bbox': [i[0] for i in result]               # 边框坐标
         }
+
+        print(f"<<< image ocr res2 as below: {res2}")
+
         return res2, img_shape
     else:
         return
@@ -116,6 +106,9 @@ def invocations():
                 'bbox': res['bbox'],
                 'shape': img_shape
             }
+
+            print(f"<<< image ocr jsonify(inference_result as below: {jsonify(inference_result)}")
+
             return jsonify(inference_result)
 
         else:
