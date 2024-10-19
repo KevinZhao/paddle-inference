@@ -5,9 +5,11 @@ import os
 import warnings
 import numpy as np
 from paddleocr import PaddleOCR
+from flask import jsonify
 import cv2
 import flask
 import requests
+
 
 # 忽略不必要的警告
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -65,9 +67,9 @@ def bbox_main(type, imgpath, detect='paddle'):
 
         # 保存结果
         res2 = {
-            'label': [i[1][0] for i in result],
-            'confidence': [i[1][1] for i in result],
-            'bbox': [i[0] for i in result]
+            'label': [i[1][0] for i in result],          # 文本内容
+            'confidence': [i[1][1] for i in result],     # 置信度
+            'bbox': [i[0] for i in result]               # 边框坐标
         }
         return res2, img_shape
     else:
@@ -110,12 +112,11 @@ def invocations():
 
             inference_result = {
                 'label': res['label'],
-                'confidences': res['confidence'],
+                'confidence': res['confidence'],
                 'bbox': res['bbox'],
                 'shape': img_shape
             }
-            _payload = json.dumps(inference_result, ensure_ascii=False, cls=MyEncoder)
-            return flask.Response(response=_payload, status=200, mimetype='application/json')
+            return jsonify(inference_result)
 
         else:
             return flask.Response(response='Failed to download image from the provided URL',
