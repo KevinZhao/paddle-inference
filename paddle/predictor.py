@@ -17,9 +17,9 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 app = flask.Flask(__name__)
 
 # 确保新模型的参数存在
-for i in ['/opt/program/inference/en_PP-OCRv3_det_infer',  # 使用 PP-OCRv3 英文检测模型
-          '/opt/program/inference/en_PP-OCRv4_rec_infer', 
-          '/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer']:  # 使用 PP-OCRv4 分类模型
+for i in ['/opt/program/inference/ch_PP-OCRv4_det_infer.tar',
+          '/opt/program/inference/ch_PP-OCRv4_rec_infer.tar',
+          '/opt/program/inference/ch_ppocr_mobile_v2.0_cls_infer']:
     if os.path.exists(i):
         print(f"<<<< pretrained model exists for: {i}")
     else:
@@ -31,9 +31,9 @@ print("<<< files under /opt/ml/model", os.listdir('/opt/ml/model/'))
 print("Start loading models!")
 
 # 使用 PP-OCRv3 检测模型和 PP-OCRv4 识别及分类模型
-ocr = PaddleOCR(det_model_dir='/opt/program/inference/en_PP-OCRv3_det_infer',  # 英文检测模型
-                rec_model_dir='/opt/program/inference/en_PP-OCRv4_rec_infer',  # 英文识别模型
-                lang='en',  # 指定语言为英文
+ocr = PaddleOCR(det_model_dir='/opt/program/inference/ch_PP-OCRv4_det_infer.tar',  
+                rec_model_dir='/opt/program/inference/ch_PP-OCRv4_rec_infer.tar',  
+                #lang='en',  # 指定语言为英文
                 use_pdserving=False)  # 加载模型到内存
 print("Models loaded successfully!")
 

@@ -25,10 +25,10 @@ RUN mkdir /opt/ml/model/
 RUN cd /opt/program/inference/
 
 #det
-RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv3/english/en_PP-OCRv3_det_infer.tar && tar -xf /opt/program/inference/en_PP-OCRv3_det_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/en_PP-OCRv3_det_infer.tar
+RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv4/chinese/ch_PP-OCRv4_det_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_det_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_det_infer.tar
 
 #rec
-RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv4/english/en_PP-OCRv4_rec_infer.tar && tar -xf /opt/program/inference/en_PP-OCRv4_rec_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/en_PP-OCRv4_rec_infer.tar
+RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/PP-OCRv4/chinese/ch_PP-OCRv4_rec_infer.tar && tar -xf /opt/program/inference/ch_PP-OCRv4_rec_infer.tar -C /opt/program/inference/ && rm -rf /opt/program/inference/ch_PP-OCRv4_rec_infer.tar
 
 #cls
 RUN wget -P /opt/program/inference/ https://paddleocr.bj.bcebos.com/dygraph_v2.0/ch/ch_ppocr_mobile_v2.0_cls_infer.tar && \
